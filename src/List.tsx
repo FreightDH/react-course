@@ -6,12 +6,14 @@ interface ListProps {
 }
 
 const List: FC<ListProps> = ({ people }): ReactElement => {
+  if (!people) return <></>;
+
   return (
-    <section>
+    <ul>
       {people.map((person) => (
-        <Person key={person.id} {...person} />
+        <Person key={person.id} person={person} />
       ))}
-    </section>
+    </ul>
   );
 };
 
