@@ -10,6 +10,11 @@ const App = (): ReactElement => {
       <section className="container">
         <h3>{people?.length || 0} Birthdays Today</h3>
         <List people={people} />
+        {people && (
+          <button className="btn" onClick={() => setPeople(null)}>
+            Clear all
+          </button>
+        )}
       </section>
     </main>
   );
