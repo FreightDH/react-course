@@ -6,6 +6,29 @@ const App = (): ReactElement => {
   const [activeIndex, setActiveIndex] = useState(0);
   const { name, job, image, text } = reviews[activeIndex];
 
+  const checkIndex = (newIndex: number) => {
+    if (newIndex < 0) return reviews.length - 1;
+    if (newIndex > reviews.length - 1) return 0;
+
+    return newIndex;
+  };
+
+  const prevPerson = () => {
+    const newIndex = checkIndex(activeIndex - 1);
+    setActiveIndex(newIndex);
+  };
+
+  const nextPerson = () => {
+    const newIndex = checkIndex(activeIndex + 1);
+    setActiveIndex(newIndex);
+  };
+
+  const getRandomPerson = () => {
+    let newIndex = Math.floor(Math.random() * reviews.length);
+    if (newIndex === activeIndex) newIndex++;
+    setActiveIndex(newIndex);
+  };
+
   return (
     <main>
       <div className="review">
@@ -19,14 +42,16 @@ const App = (): ReactElement => {
         <p className="job">{job}</p>
         <p className="info">{text}</p>
         <div className="btn-container">
-          <button className="prev-btn">
+          <button className="prev-btn" onClick={prevPerson}>
             <FaChevronLeft />
           </button>
-          <button className="next-btn">
+          <button className="next-btn" onClick={nextPerson}>
             <FaChevronRight />
           </button>
         </div>
-        <button className="btn btn-hipster">surprise me</button>
+        <button className="btn btn-hipster" onClick={getRandomPerson}>
+          surprise me
+        </button>
       </div>
     </main>
   );
