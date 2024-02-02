@@ -1,15 +1,19 @@
 import { ReactElement } from 'react';
-import cl from './App.module.scss';
+import questions from './data';
+import { Question } from './components';
 
 const App = (): ReactElement => {
   return (
-    <>
-      <main className={cl.page}>
-        <div className="page__container">
-          <div className={cl.page__body}></div>
-        </div>
-      </main>
-    </>
+    <main>
+      <div className="container">
+        <h1>Questions</h1>
+        <ul>
+          {questions.map((question) => (
+            <Question key={question.id} question={question} />
+          ))}
+        </ul>
+      </div>
+    </main>
   );
 };
 

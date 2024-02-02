@@ -222,6 +222,9 @@ main {
 .question p {
   color: var(--grey-500);
   line-height: 2;
+  transition: all 0.3s ease 0s;
+}
+.question p.open {
   margin-top: 1rem;
 }
 .question header {
