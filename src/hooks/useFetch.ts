@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 const useFetch = (url: string) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<Tours | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,7 +28,7 @@ const useFetch = (url: string) => {
     fetchData();
   }, [url]);
 
-  return [data, isLoading, isError];
+  return [data, isLoading, isError] as [Tours, boolean, boolean];
 };
 
 export default useFetch;
