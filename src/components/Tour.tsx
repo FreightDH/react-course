@@ -2,9 +2,10 @@ import { FC, ReactElement, useState } from 'react';
 
 interface TourProps {
   tour: Tour;
+  removeTour: (id: string) => void;
 }
 
-const Tour: FC<TourProps> = ({ tour }): ReactElement => {
+const Tour: FC<TourProps> = ({ tour, removeTour }): ReactElement => {
   const [moreInfo, setMoreInfo] = useState(false);
 
   return (
@@ -19,6 +20,9 @@ const Tour: FC<TourProps> = ({ tour }): ReactElement => {
             {moreInfo ? 'Show Less' : 'Read More'}
           </button>
         </p>
+        <button className="delete-btn btn btn-block" onClick={() => removeTour(tour.id)}>
+          Not Interested
+        </button>
       </div>
     </li>
   );

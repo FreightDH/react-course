@@ -1,34 +1,40 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, SetStateAction, Dispatch } from 'react';
 
 const useFetch = (url: string) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [data, setData] = useState<Tours | null>(null);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const res = await fetch(url);
+  const fetchData = async () => {
+    try {
+      const res = await fetch(url);
 
-        if (!res.ok) {
-          setIsError(true);
-          setIsLoading(false);
-          return;
-        }
-
-        const response = await res.json();
-        setData(response);
-      } catch (error) {
+      if (!res.ok) {
         setIsError(true);
-      } finally {
         setIsLoading(false);
+        return;
       }
-    };
 
+      const response = await res.json();
+      setData(response);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
     fetchData();
   }, [url]);
 
-  return [data, isLoading, isError] as [Tours, boolean, boolean];
+  return [data, setData, fetchData, isLoading, isError] as [
+    Tours,
+    Dispatch<SetStateAction<Tours | null>>,
+    () => Promise<void>,
+    boolean,
+    boolean,
+  ];
 };
 
 export default useFetch;
