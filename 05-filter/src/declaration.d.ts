@@ -12,4 +12,4 @@ type Dish = {
   desc: string;
 };
 
-type Dishes = Dish[];
+type Category = 'all' | 'breakfast' | 'lunch' | 'shakes';

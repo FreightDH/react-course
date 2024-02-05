@@ -73,4 +73,6 @@ const menu = [
   },
 ];
 
-export default menu;
+const categories = ['all', 'breakfast', 'lunch', 'shakes'];
+
+export { menu, categories };
