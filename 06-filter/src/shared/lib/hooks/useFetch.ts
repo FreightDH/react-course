@@ -28,7 +28,7 @@ const useFetch = (url: string) => {
     fetchData();
   }, []);
 
-  return [data, isLoading, isError];
+  return [data, isLoading, isError] as [Data | null, boolean, boolean];
 };
 
 export default useFetch;
