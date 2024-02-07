@@ -252,10 +252,17 @@ ul {
 
 .job-desc {
   display: grid;
-  grid-template-columns: auto 1fr;
-  column-gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
   align-items: center;
   margin-bottom: 1.25rem;
+}
+
+.job-duty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
 }
 
 .job-icon {
