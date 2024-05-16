@@ -37,7 +37,7 @@
     "lint-staged": "^15.0.2",
     "prettier": "^3.0.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.5.3"
   },
   "lint-staged": {
     "**/*.{tsx,ts}": [
